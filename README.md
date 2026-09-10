@@ -1,5 +1,23 @@
 # CHMENG162-DynamicControl
 
+- Textbook:
+Process Control: Modeling, Design, and Simulation
+Wayne Bequette (Publisher: Prentice Hall, 2003)
+
+- Concepts:
+
+Physics-based process modeling
+Analysis of dynamical systems
+Empirical process modeling
+Feedback control and PID control design
+Direct control synthesis
+Internal model control
+Feedforward/cascade control
+Closed-loop interactions in multi-loop control systems
+Frequency-response analysis
+Statistical process control
+
+
 ## W2 Lab 
  Ordinary Differential Equations (ODEs)
 
