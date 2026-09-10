@@ -4,9 +4,20 @@
 Process Control: Modeling, Design, and Simulation
 Wayne Bequette (Publisher: Prentice Hall, 2003)
 
+- Definition:
+What is a Mathematical Model? > A model is an abstraction of reality!
+
+Eykhoff (1974):
+“a representation of the essential aspects of an existing system (or
+a system to be constructed) which represents knowledge of that
+system in a usable form”
+
+Dynamic model:
+Mathematical description of the transient (unsteady state) behavior of a process
+
 - Concepts:
 
-Physics-based process modeling
+Physics-based process modeling: 
 Analysis of dynamical systems
 Empirical process modeling
 Feedback control and PID control design
@@ -40,3 +51,6 @@ where:
 - scipy.integrate import solve_ivp for initial value problem y(0) = y_0
 - Explicit and Implicit Solver: Backward Differentiation Formula
 - Robertson's Stiff ODE Problem
+
+
+
