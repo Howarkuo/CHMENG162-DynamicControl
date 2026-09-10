@@ -7,26 +7,26 @@ Wayne Bequette (Publisher: Prentice Hall, 2003)
 - Definition:
 What is a Mathematical Model? > A model is an abstraction of reality!
 
-Eykhoff (1974):
+- Eykhoff (1974):
 “a representation of the essential aspects of an existing system (or
 a system to be constructed) which represents knowledge of that
 system in a usable form”
 
-Dynamic model:
+- Dynamic model:
 Mathematical description of the transient (unsteady state) behavior of a process
 
-- Concepts:
+## Concepts:
 
-Physics-based process modeling: 
-Analysis of dynamical systems
-Empirical process modeling
-Feedback control and PID control design
-Direct control synthesis
-Internal model control
-Feedforward/cascade control
-Closed-loop interactions in multi-loop control systems
-Frequency-response analysis
-Statistical process control
+- Physics-based process modeling: 
+- Analysis of dynamical systems
+- Empirical process modeling
+- Feedback control and PID control design
+- Direct control synthesis
+- Internal model control
+- Feedforward/cascade control
+- Closed-loop interactions in multi-loop control systems
+- Frequency-response analysis
+- Statistical process control
 
 
 ## W2 Lab 
