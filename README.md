@@ -63,6 +63,9 @@ where:
 
 
 ### Examples1 : Spatial ODE iPFR in steady state
+![Q1note-PFR.png](Q1note-PFR.png)
+
+
 - 1.Consider a **steady-state plug flow reactor**, with flow rate $F= 1 m^3/s$ , length $L=5 m$ and cross-sectional
 area $A=1 m^2$. Consider a single step first-order, irreversible reaction : $$A→B$$ Consider the initial concentration of $A$ to be $1 M$  at the inlet. Perform a component balance over a differential element $dx$ along the reactor. Assume $k=1 s^{-1}$ to be the rate constant for the reaction. Now, could you frame a first-order differential equation from this balance? Solve it and plot the concentration profile of A and B along the $x$ direction. 
 
@@ -120,7 +123,28 @@ $$
  -   MV(what i can change): flow rate,
  -   CV (what i want to change): C_A(x) out concentration or Conversion rate
  -   DV (what i cannot change): Inlet Concentration
-![Alternative Text](URL_or_Path_to_Image)
+
+![PFR1.png](PFR1.png)
+
+### Example 2: Well mixed time-dependent Batch Reactor (Accumulation is not zero!), with Stiff Problem 
+for 2. it is a non-continious batch reactor, object is to build concentration time profile C(t), assumption is isothermal, Both reactions are irreversible. balance is also **mass accumulation = Generation, so not in steady state!**, consecutive equations are pure reaction kinetic of time since the concentration does not depend on location and volume , degree of freedom is 0 since equation =3, variable =3, DVs are concentration of C , 
+
+```
+        Batch Reactor
+    ---------------------
+    |                   |
+    |     A → B → C     |
+    |                   |
+    |   Well mixed      |
+    |   V = 3 m³        |
+    ---------------------
+
+        No inlet
+        No outlet
+
+        C = C(t)
+```
+![PFR1.png](PFR1.png)
 
 
 
