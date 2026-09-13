@@ -27,7 +27,10 @@ Mathematical description of the transient (unsteady state) behavior of a process
 ## Concepts:
 
 - Physics-based process modeling(Assumption Must be made!): Mass Balance for Blending System, Steady State Mass Balance , Possible Control Strategies (Feedforward, FeedBack),  
-- Analysis of dynamical systems
+- Analysis of dynamical systems: What and why build models? 3 Model Approaches:
+- A) Physics-based (white box) e.g Arrhenius equation $$k= Aexp(-E/RT)$$ where rate depend on temp --> Material and energy balances, Heat , Mass , momentum transfer , thermo/chem kinetics, (Scalable / expensive )
+- B) Data-Driven (black box) $$\min_{\theta} \sum_{i=1}^{n} l(y_i, f(u_i; \theta))$$ (general applied, fail to extrapolate to edge case , require a large of data )
+- C) Semi-Emperical : e.g Unsteady State isothermal CSTR: assumption first-order reaction (ssumption when only based on data) , assumption density of inlet and outlet stream cosntant, liquid volume constant, temp , perfect mix
 - Empirical process modeling
 - Feedback control and PID control design
 - Direct control synthesis
