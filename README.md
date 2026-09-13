@@ -144,7 +144,79 @@ for 2. it is a non-continious batch reactor, object is to build concentration ti
 
         C = C(t)
 ```
-![PFR1.png](PFR1.png)
+![batchreaction_stiff.png](batchreaction_stiff.png)
+![batchreaction_stiff_2.png](batchreaction_stiff_2.png)
+
+### Ex.2 Discussion : Stiff ODEs Systems 
+
+Stiff systems are common in chemical engineering, particularly when we have reactions with a wide range of timescales including both fast and slow reactions. For these systems, standard explicit solvers require impractically small time steps to maintain numerical stability, even when the solution itself is changing slowly.
+
+The system of ODEs we will use is a classic stiff ODE example from chemical kinetics, known as Robertson's problem. It involves three species with very different reaction rates, creating a wide range of timescales.
+
+The system of ODEs is given by:
+
+$$
+\frac{d[X]}{dt} = -0.04[X] + 10^4[Y][Z]
+$$
+
+$$
+\frac{d[Y]}{dt} = 0.04[X] - 10^4[Y][Z] - 3 \times 10^7[Y]^2
+$$
+
+$$
+\frac{d[Z]}{dt} = 3 \times 10^7[Y]^2
+$$
+
+The very large rate constants ($10^4$ and $3 \times 10^7$) make this a stiff system.
+
+### Ex.2 Discussion : Explicit vs. Implicit Solvers
+
+The key difference between explicit and implicit solvers is how they calculate the system's state at a future time step.
+
+An **explicit solver** calculates the state of a system at a later time from the state of the system at the **current time only**. This approach is simpler to program but is "conditionally stable," meaning it requires very small time steps to avoid instability or "exploding" solutions, particularly for stiff problems. The default solver for `solve_ivp`, `'RK45'`, is an example of an explicit solver.
+
+An **implicit solver** finds a solution by solving an equation that involves **both the current and future states** of the system. This method is more computationally intensive per step but is "unconditionally stable" and can therefore take much larger time steps, making it much more efficient and reliable for solving stiff ODEs. The `'BDF'` (Backward Differentiation Formula) solver, available in `solve_ivp`, is an example of an implicit solver and is a good choice for stiff problems.
+
+```
+# Define the stiff ODE system (Robertson's problem)
+def robertson_relaxed_ode(t, y):
+    """
+    Defines the system of stiff ODEs for Robertson's chemical reaction.
+    y[0] = [X], y[1] = [Y], y[2] = [Z]
+    """
+    X, Y, Z = y
+    dXdt = -0.04 * X + 1e4 * Y * Z
+    dYdt = 0.04 * X - 1e4 * Y * Z - 1e7 * Y**2
+    dZdt = 3e7 * Y**2
+    return [dXdt, dYdt, dZdt]
+# --- Attempt to solve with the default explicit solver ('RK45') ---
+# We will use a relatively loose tolerance to make sure it runs without taking forever.
+solution_rk45 = integrate.solve_ivp(robertson_ode, t_span, y0, method='RK45', t_eval=t_eval)
+
+```
+<img width="999" height="516" alt="image" src="https://github.com/user-attachments/assets/09e1f46f-a215-4ecc-a02d-b5135f5f0b14" />
+
+
+
+```
+# Define the stiff ODE system (Robertson's problem)
+def robertson_relaxed_ode(t, y):
+    """
+    Defines the system of stiff ODEs for Robertson's chemical reaction.
+    y[0] = [X], y[1] = [Y], y[2] = [Z]
+    """
+    X, Y, Z = y
+    dXdt = -0.04 * X + 1e4 * Y * Z
+    dYdt = 0.04 * X - 1e4 * Y * Z - 1e7 * Y**2
+    dZdt = 3e7 * Y**2
+    return [dXdt, dYdt, dZdt]
+
+solution_bdf = integrate.solve_ivp(robertson_ode, t_span, y0, method='BDF', t_eval=t_eval)
+
+
+```
+<img width="1030" height="578" alt="image" src="https://github.com/user-attachments/assets/a4355031-1545-4439-a656-7a850405cb3b" />
+
 
 
 
