@@ -277,6 +277,12 @@ $$r_{\text{initiation}} = k_s C_M$$
 
 >  **Hint:** $\gamma(t)$ is not affected by the propagation reaction and is not present in the feed.
 
+![poly-uncstr4](poly-uncstr4.png)
+![poly-uncstr5](poly-uncstr5.png)
+![poly-uncstr1](poly-uncstr1.png)
+![poly-uncstr2](poly-uncstr2.png)
+![poly-uncstr3](poly-uncstr3.png)
+
 
 
 
