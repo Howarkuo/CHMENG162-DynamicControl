@@ -49,6 +49,7 @@ Mathematical description of the transient (unsteady state) behavior of a process
 | **Data-Driven** | "Black Box" | Learns relationships directly from observations without requiring physical equations. Minimizes error between predicted and actual data. | **Examples:**<br>• Machine learning<br>• Neural networks<br>• Regression |
 
 #  Definition of unsteady state, steady state and equilibium
+![states.png](states.png)
 
 
 
