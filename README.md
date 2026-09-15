@@ -234,4 +234,49 @@ solution_bdf = integrate.solve_ivp(robertson_ode, t_span, y0, method='BDF', t_ev
 
 
 
+#  Exercise Case 1: : Unsteady-State CSTR with Radical Polymerization
+
+A Continuous Stirred-Tank Reactor (CSTR) can be used in radical polymerization processes. Consider an isothermal CSTR that receives a feed of solvated fresh monomer $M$ with flow rate $q_{\text{in}}$ and monomer concentration $C_{M,\text{in}}$. A valve is placed on the inlet stream to the CSTR. The CSTR is not constant volume since its outlet flow varies in time as:
+
+$$q_{\text{out}}(t) = \alpha \sqrt{h(t)}$$
+
+where $\alpha$ is a constant and $h(t)$ is the liquid level in the tank.
+
+---
+
+### Chemical Reactions & Kinetics
+
+In a propagation reaction, a unit of monomer $M$ can react with a polymer chain of length $i$ in an elementary step:
+
+$$M + P_i \rightarrow P_{i+1}$$
+
+For each reaction, the rate constant is the same, such that the rate of disappearance of $M$ during propagation can be written as:
+
+$$r_M = k C_M C_{P_1} + k C_M C_{P_2} + k C_M C_{P_3} + \dots = k C_M \sum_{i=1}^{\infty} C_{P_i}$$
+
+For convenience, we define the total polymer concentration as:
+
+$$\gamma(t) = \sum_{i=1}^{\infty} C_{P_i}$$
+
+The radical chain reaction is started with an initiation reaction:
+
+$$M + * \rightarrow P_1$$
+
+which has the following rate law:
+
+$$r_{\text{initiation}} = k_s C_M$$
+
+> **Note:** The reaction has no termination step (i.e., all polymer species remain reactive).
+
+---
+
+### Questions
+
+* **(a)** List the potential manipulated variable(s), controlled variable(s), and disturbance variable(s) for this process.
+* **(b)** Derive the model that describes the dynamics of the liquid level in the tank ($h(t)$), the concentration of monomer ($C_M(t)$), and the sum of polymer concentrations ($\gamma(t)$) as a set of three coupled ODEs. Clearly state all your modeling assumptions.
+
+>  **Hint:** $\gamma(t)$ is not affected by the propagation reaction and is not present in the feed.
+
+
+
 
