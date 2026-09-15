@@ -40,6 +40,17 @@ Mathematical description of the transient (unsteady state) behavior of a process
 - Frequency-response analysis
 - Statistical process control
 
+#  Model Types: Foundations & Examples
+
+| Model Type | Alias | Foundation | Examples & Details |
+| :--- | :--- | :--- | :--- |
+| **Physics-Based** | "White Box" | Governing physical laws (Mass/Energy/Momentum Balance, Thermodynamics, Chemical Kinetics).<br><br>**Core Principle:**<br>Accumulation = In − Out + Generation | **Example (Kinetics):**<br> $k = A \exp(-E_a/RT)$ |
+| **Semi-Empirical** | "Gray Box" | Combines physical conservation laws with experimentally fitted relationships (e.g., balance equations from physics, kinetics from data). | **Example (Isothermal CSTR):**<br> $\frac{dC_a}{dt} = \frac{F}{V}(C_{a,in} - C_a) - kC_a$<br><br>**Assumptions:**<br>• Perfect mixing<br>• Constant volume/density<br>• Isothermal<br>• 1st-order reaction |
+| **Data-Driven** | "Black Box" | Learns relationships directly from observations without requiring physical equations. Minimizes error between predicted and actual data. | **Examples:**<br>• Machine learning<br>• Neural networks<br>• Regression |
+
+#  Definition of unsteady state, steady state and equilibium
+
+
 
 ## W2 Lab 
  Ordinary Differential Equations (ODEs)
