@@ -24,7 +24,7 @@ Mathematical description of the transient (unsteady state) behavior of a process
 6. Perform degrees of freedom (Is the model solvable?)
 7. Classify input as Dependent Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
 
-## Concepts:
+## Concepts: Define deviation terms from steady state!
 
 - Physics-based process modeling(Assumption Must be made!): Mass Balance for Blending System, Steady State Mass Balance , Possible Control Strategies (Feedforward, FeedBack),  
 - Analysis of dynamical systems: What and why build models? 3 Model Approaches:
