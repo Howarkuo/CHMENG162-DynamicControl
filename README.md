@@ -283,6 +283,56 @@ $$r_{\text{initiation}} = k_s C_M$$
 ![poly-uncstr2](poly-uncstr2.png)
 ![poly-uncstr3](poly-uncstr3.png)
 
+# W3: Heated Stirred Tank example with Energy Balance , Laplace Transform with unit steps
+
+## Laplace transform is a tool to convert of function of time into a function of complex variable. - Sympy.heaviside , Sympy.laplace_transform for unit function
+**Time Domain (t) → Laplace or s-Domain (s)**
+
+The main reason we do this is that the Laplace transform converts complicated **differential equations** (in the time domain) into simple **algebraic equations** (in the s-domain).
+
+The formal definition is:
+
+$$
+\\mathcal{L}\{f(t)\} = F(s) = \int_0^\infty e^{-st} f(t) \, dt
+$$
+
+The relationship between a system's output, $Y(s)$, and its input, $U(s)$, in the s-domain is called the transfer function, $G(s)$:
+$$G(s) = \frac{U(s)}{Y(s)}$$
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import sympy as sp
+from scipy import signal
+t, s, a = sp.symbols('t s a')
+# unit step function
+gamma_t = sp.Heaviside(t)
+L_gamma = sp.laplace_transform(gamma_t, t,s,noconds=True)
+print("Laplace Transform of Unit Step Function γ(t):", L_gamma)
+
+# Exponential Function
+exp_at = sp.exp(-a*t) * sp.Heaviside(t)  # e^(-at) with step function
+L_exp = sp.laplace_transform(exp_at, t, s, noconds=True)
+print("Laplace Transform of e^(-at):", L_exp)
+
+#Laplace Transform of Unit Step Function γ(t): 1/s
+#Laplace Transform of e^(-at): 1/(a + s)
 
 
+```
+Laplace Transform of the Heaviside function $\gamma(t)$ is defined as:
+
+$$
+\mathcal{L}\{\gamma(t)\} = \frac{1}{s}
+$$
+
+The Laplace Transform of the exponential function $e^{-at}$ is defined as:
+
+$$
+\mathcal{L}\{e^{-at}\} = \frac{1}{s + a}
+$$
+
+
+
+# W4: Laplace Transform skills and properties: Partial fraction Expansion, Final / initial value theorem
 
