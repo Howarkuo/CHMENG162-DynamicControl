@@ -23,7 +23,9 @@ Mathematical description of the transient (unsteady state) behavior of a process
 5. Introduce constitutive equations
 6. Perform degrees of freedom (Is the model solvable?)
 7. Classify input as Distrurbance Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
-<img width="1024" height="538" alt="image" src="https://github.com/user-attachments/assets/282915eb-2b1b-4e3a-876f-8d9bba43da42" />
+- **Close loop Feedback Control of liquid level** : measure CV height <img width="685" height="404" alt="Screenshot 2026-09-22 at 3 27 42 PM" src="https://github.com/user-attachments/assets/fe7a159d-dab3-4dec-88bc-2aca3bd83258" />
+- **Close loop Feedforward Control of liquid level**: measure disturbance variable (what cannot be changed)  <img width="752" height="413" alt="Screenshot 2026-09-22 at 3 31 58 PM" src="https://github.com/user-attachments/assets/d84f4b19-3f9e-4d96-9e5c-78ff33a5f5e7" />
+
 
 
 
