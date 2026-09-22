@@ -23,6 +23,9 @@ Mathematical description of the transient (unsteady state) behavior of a process
 5. Introduce constitutive equations
 6. Perform degrees of freedom (Is the model solvable?)
 7. Classify input as Distrurbance Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
+<img width="1024" height="538" alt="image" src="https://github.com/user-attachments/assets/282915eb-2b1b-4e3a-876f-8d9bba43da42" />
+
+
 
 ## Concepts: Define deviation terms from steady state!
 
