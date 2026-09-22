@@ -22,10 +22,11 @@ Mathematical description of the transient (unsteady state) behavior of a process
 4. Write balance equation
 5. Introduce constitutive equations
 6. Perform degrees of freedom (Is the model solvable?)
-7. Classify input as Dependent Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
+7. Classify input as Distrurbance Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
 
 ## Concepts: Define deviation terms from steady state!
 
+- Terms: control variable , disturbance variable , maniputate variable 
 - Physics-based process modeling(Assumption Must be made!): Mass Balance for Blending System, Steady State Mass Balance , Possible Control Strategies (Feedforward, FeedBack),  
 - Analysis of dynamical systems: What and why build models? 3 Model Approaches:
 - A) Physics-based (white box) e.g Arrhenius equation $$k= Aexp(-E/RT)$$ where rate depend on temp --> Material and energy balances, Heat , Mass , momentum transfer , thermo/chem kinetics, (Scalable / expensive )
