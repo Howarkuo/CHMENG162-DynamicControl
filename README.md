@@ -15,6 +15,10 @@ system in a usable form”
 - Dynamic model:
 Mathematical description of the transient (unsteady state) behavior of a process
 
+<img width="1180" height="655" alt="Screenshot 2026-09-22 at 4 26 55 PM" src="https://github.com/user-attachments/assets/ee68c0fd-6e04-417e-978f-1f60843847c9" />
+<img width="1173" height="650" alt="Screenshot 2026-09-22 at 4 26 36 PM" src="https://github.com/user-attachments/assets/791f95d5-87b2-4020-a69b-b49acea3a09b" />
+
+
 ## General Procedure for Developing Dynamic Models
 1. State model objective and end use (level of complexity)
 2. Draw schematic diagram of process and label all process variables
