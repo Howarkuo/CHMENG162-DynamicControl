@@ -26,7 +26,7 @@ Mathematical description of the transient (unsteady state) behavior of a process
 
 ## Concepts: Define deviation terms from steady state!
 
-- Terms: **controlled variable** (quantify the performance of final product) , **disturbance variable** (cause the control variable to deviate froom their respective set points) , **maniputate variable **(adjusted dynamically to keep the controlled variable at set points)
+- Terms: **controlled variable** (quantify the performance of final product) , **disturbance variable** (cause the control variable to deviate froom their respective set points) , **maniputate variable** (adjusted dynamically to keep the controlled variable at set points)
 - Physics-based process modeling(Assumption Must be made!): Mass Balance for Blending System, Steady State Mass Balance , Possible Control Strategies (Feedforward, FeedBack),  
 - Analysis of dynamical systems: What and why build models? 3 Model Approaches:
 - A) Physics-based (white box) e.g Arrhenius equation $$k= Aexp(-E/RT)$$ where rate depend on temp --> Material and energy balances, Heat , Mass , momentum transfer , thermo/chem kinetics, (Scalable / expensive )
