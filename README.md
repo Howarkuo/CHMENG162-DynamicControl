@@ -350,3 +350,38 @@ $$
 
 # W4: Laplace Transform skills and properties: Partial fraction Expansion, Final / initial value theorem
 
+## Exercise Case 2: Exothermic Jacket CSTR Dynamic model that predicts concentration and temperature over time
+
+$$\(A\rightarrow B+\Delta H_{rxn}\)$$
+
+The inlet to the CSTR has:
+
+* Flow rate: $F_{in}$
+* Inlet concentration of species A: $C_{A,in}$
+* Inlet temperature: $T_{in}$
+
+The fluid volume in the CSTR is constant.
+
+Assume that the inlet flow rate is constant:
+
+$$\(F_{in}=\text{constant}\)$$
+
+The reaction is first-order in species A, with rate constant $k$.
+
+The reaction rate can therefore be written as:
+
+$$\(r=kC_A\)$$
+
+The reactor is surrounded by a cooling jacket. The jacket contains a large excess of cooling fluid, so the heat transfer between the coolant and reactor can be modeled as:
+
+$$\(\dot Q_{cool}=UA(T_{cool}-T)\)$$
+
+where:
+
+* $U$ is the overall heat-transfer coefficient.
+* $A$ is the heat-transfer area.
+* $T_{cool}$ is the coolant temperature.
+* $T$ is the reactor temperature.
+
+The coolant temperature $T_{cool}$ can be changed by the operator.
+
