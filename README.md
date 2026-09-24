@@ -32,7 +32,9 @@ Mathematical description of the transient (unsteady state) behavior of a process
 $$
 u(t) = \underbrace{\bar{u}}_{\text{baseline MV}} + \underbrace{K(y_{SP} - y(t))}_{\text{correction/ error}}
 $$
-- **Close loop Feedforward Control of liquid level**: measure disturbance variable (what cannot be changed)  <img width="752" height="413" alt="Screenshot 2026-09-22 at 3 31 58 PM" src="https://github.com/user-attachments/assets/d84f4b19-3f9e-4d96-9e5c-78ff33a5f5e7" />
+- **Close loop Feedforward Control of liquid level**: measure disturbance variable (what cannot be changed)
+**Advantage: Cover Disturbance terms before they upset the process!**
+  - <img width="752" height="413" alt="Screenshot 2026-09-22 at 3 31 58 PM" src="https://github.com/user-attachments/assets/d84f4b19-3f9e-4d96-9e5c-78ff33a5f5e7" />
 
 
 
