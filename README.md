@@ -388,3 +388,14 @@ where:
 
 The coolant temperature $T_{cool}$ can be changed by the operator.
 
+### Solution
+#### 1. constitutive equations of temperature and deviation of concentration
+
+<img width="763" height="465" alt="Screenshot 2026-09-24 at 12 36 38 AM" src="https://github.com/user-attachments/assets/42d0e30c-6e88-4580-8593-46fdb174f6b0" />
+<img width="808" height="596" alt="Screenshot 2026-09-24 at 12 36 21 AM" src="https://github.com/user-attachments/assets/64eb3ce3-9f99-4112-819d-35651b2a112d" />
+
+#### 2. New steady state after unit step change of Cooling temperature while other DVs and MVs remain constant by laplace transform and final value theorem
+#### 3. Time domain response with reverse laplace transform (of New steady state after unit step change of Cooling temperature while other DVs and MVs ) 
+<img width="675" height="820" alt="Screenshot 2026-09-24 at 12 40 31 AM" src="https://github.com/user-attachments/assets/097ecf3a-7232-4a8b-a3c1-64e2e75135e9" />
+<img width="670" height="654" alt="Screenshot 2026-09-24 at 12 40 43 AM" src="https://github.com/user-attachments/assets/bc772f59-0fb2-4f57-9f40-750d293b9d8e" />
+
