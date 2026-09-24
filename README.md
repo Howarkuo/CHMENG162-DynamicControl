@@ -23,8 +23,7 @@ Mathematical description of the transient (unsteady state) behavior of a process
 1. State model objective and end use (level of complexity)
 2. Draw schematic diagram of process and label all process variables
 3. List all assumptions (no accumulation for  steady state concentration no accumulation , Perfect mix so uniform concentration over each cross section C = C(x) , Constant reaction volume -> constant volumetric flow rate / density / cross section area / isothermal operation (k = constant) 
-**4. Write balance equation**
-4.1 : Write Overall mass balance , 4.2: Write Species mass / concentration / mole fraction balance , 4.3 Energy balance (if neccessary)
+4. Write balance equation --> 4.1 : Write Overall mass balance , 4.2: Write Species mass / concentration / mole fraction balance , 4.3 Energy balance (if neccessary)
 5. Introduce constitutive equations
 6. Perform degrees of freedom (Is the model solvable?)
 7. Classify input as Distrurbance Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
