@@ -28,13 +28,14 @@ Mathematical description of the transient (unsteady state) behavior of a process
 6. Perform degrees of freedom (Is the model solvable?)
 7. Classify input as Distrurbance Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
 - **Close loop Feedback Control of liquid level** : measure CV height <img width="685" height="404" alt="Screenshot 2026-09-22 at 3 27 42 PM" src="https://github.com/user-attachments/assets/fe7a159d-dab3-4dec-88bc-2aca3bd83258" />
-- use deviation of controlled variable to adjust manipulate variable
-$$
-u(t) = \underbrace{\bar{u}}_{\text{baseline MV}} + \underbrace{K(y_{SP} - y(t))}_{\text{correction/ error}}
-$$
+
+$$u(t) = \underbrace{\bar{u}}_{\text{baseline MV}} + \underbrace{K(y_{SP} - y(t))}_{\text{correction/ error}}$$
+
+**use deviation of controlled variable to modify manipulated variable**
 - **Close loop Feedforward Control of liquid level**: measure disturbance variable (what cannot be changed)
 **Advantage: Cover Disturbance terms before they upset the process!**
   - <img width="752" height="413" alt="Screenshot 2026-09-22 at 3 31 58 PM" src="https://github.com/user-attachments/assets/d84f4b19-3f9e-4d96-9e5c-78ff33a5f5e7" />
+**use deviation of disturbance variable to modify manipulated variable**
 
 
 
@@ -352,7 +353,7 @@ $$
 
 # W4: Laplace Transform skills and properties: Partial fraction Expansion, Final / initial value theorem
 
-## Exercise Case 2: Exothermic Jacket CSTR Dynamic model that predicts concentration and temperature over time
+## Exercise Case 2: Feedforward Control --> Exothermic Jacket CSTR Dynamic model that predicts concentration and temperature over time
 
 $$\(A\rightarrow B+\Delta H_{rxn}\)$$
 
