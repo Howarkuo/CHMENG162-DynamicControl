@@ -28,7 +28,7 @@ Mathematical description of the transient (unsteady state) behavior of a process
 6. Perform degrees of freedom (Is the model solvable?)
 7. Classify input as Distrurbance Variables I(What effect outcome but I cannot control)or Manipulate variable (What can I do to controk)
 - **Close loop Feedback Control of liquid level** : measure CV height <img width="685" height="404" alt="Screenshot 2026-09-22 at 3 27 42 PM" src="https://github.com/user-attachments/assets/fe7a159d-dab3-4dec-88bc-2aca3bd83258" />
-
+- use deviation of controlled variable to adjust manipulate variable
 $$
 u(t) = \underbrace{\bar{u}}_{\text{baseline MV}} + \underbrace{K(y_{SP} - y(t))}_{\text{correction/ error}}
 $$
