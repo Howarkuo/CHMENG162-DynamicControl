@@ -21,7 +21,7 @@ Mathematical description of the transient (unsteady state) behavior of a process
 ## Ideal Reactor Design Algorithm
 
 ![analogy.png](analogy.png)
-![3idealreactors.png](3idealreactors.png)
+![analogy_2.png](analogy_2.png)
 ![reactoralgo.png](reactoralgo.png)
 
 
