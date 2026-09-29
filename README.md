@@ -407,3 +407,87 @@ The coolant temperature $T_{cool}$ can be changed by the operator.
 <img width="675" height="820" alt="Screenshot 2026-09-24 at 12 40 31 AM" src="https://github.com/user-attachments/assets/097ecf3a-7232-4a8b-a3c1-64e2e75135e9" />
 <img width="670" height="654" alt="Screenshot 2026-09-24 at 12 40 43 AM" src="https://github.com/user-attachments/assets/bc772f59-0fb2-4f57-9f40-750d293b9d8e" />
 
+## Exercise case 3  second-order transfer function in response to different inputs.
+- because it exhibits a rich range of behaviors, including oscillatory responses, which are typical of many chemical processes.
+- For chemical engineering, a transfer function like this could come from something such as a CSTR with coupled concentration and temperature dynamics.
+- For example, consider an exothermic reaction
+$${A\rightarrow B}\]$$
+in a non-isothermal CSTR. You might have two dynamic balances:
+$$\[\frac{dC_A}{dt}=\frac{q}{V}(C_{A0}-C_A)-k(T)C_A\]$$
+and
+$$\[\rho C_pV\frac{dT}{dt}=\rho C_pq(T_0-T)+(-\Delta H_r)Vk(T)C_A-UA(T-T_c).\]$$
+Here the two dynamic variables are
+$${C_A(t)\quad\text{and}\quad T(t)}$$
+and because they interact, linearizing around a steady state can give a second-order transfer function.
+- if the manipulated input is coolant temperature \(T_c\) and the output is reactor temperature \(T\),
+$$\[T_c(t)\rightarrow \boxed{\text{CSTR}}\rightarrow T(t),\]$$
+after linearization and Laplace transformation you could obtain something of the general form
+$${\frac{\Delta T(s)}{\Delta T_c(s)}=\frac{\text{numerator}}{s^2+a_1s+a_0}}$$
+which can then be rewritten into the standard form
+$$\[\frac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}.\]$$
+
+```python
+# --- Define Transfer Function Parameters ---
+# Arbitrary values for a second-order system for demonstration
+K = 1.0  # Steady-state gain
+wn = 5.0  # Natural frequency
+zeta = 0.5  # Damping ratio (less than 1 for an underdamped, oscillatory response)
+
+# Define the numerator and denominator of the transfer function
+# G(s) = K*wn^2 / (s^2 + 2*zeta*wn*s + wn^2)
+num = [K * wn**2]
+den = [1, 2 * zeta * wn, wn**2]
+
+# Create the TransferFunction object
+system = signal.TransferFunction(num, den)
+
+print(f"Defined system G(s) = {num} / {den}")
+print("-" * 30)
+
+
+# --- Simulation of Different Inputs ---
+
+# 1. Step Change Response
+print("Simulating Step Response...")
+t_step, y_step = signal.step(system)
+print(f"Generated {len(t_step)} time points and output values for step response.")
+
+# 2. Impulse Change Response
+print("\nSimulating Impulse Response...")
+t_impulse, y_impulse = signal.impulse(system)
+print(f"Generated {len(t_impulse)} time points and output values for impulse response.")
+
+# 3. Ramp Change Response
+print("\nSimulating Ramp Response...")
+t_ramp = np.linspace(0, 5, 200)
+ramp_slope = 2.0
+U_ramp = ramp_slope * t_ramp
+t_out, y_ramp, _ = signal.lsim(system, U=U_ramp, T=t_ramp)
+print(f"Generated {len(t_out)} time points and output values for ramp response.")
+
+```
+| Input shape | Physical example | Question being asked |
+|---|---|---|
+| **Step** | $T_c: 290 \rightarrow 295\ \text{K}$ | How does the reactor settle to a new state? |
+| **Impulse** | Brief pulse of A | How does the reactor recover from a short disturbance? |
+| **Ramp** | $T_c$ increases at $0.5\ \text{K/min}$ | Can the reactor follow a changing condition? |
+<img width="1490" height="490" alt="image" src="https://github.com/user-attachments/assets/823a30e1-c944-4974-8028-9015ff740dce" />
+
+
+<img width="1490" height="390" alt="image" src="https://github.com/user-attachments/assets/52fe82be-47cc-404b-ac79-d9e8243bcaeb" />
+
+Laplace Transform of Unit Step Function γ(t): 1/s
+Laplace Transform of e^(-at): 1/(a + s)
+Laplace Transform of γ(t): 1/s
+Laplace Transform of e^(-at): 1/(a + s)
+Laplace Transform of aγ(t) + be^(-at): a/s + b/(a + s)
+Expected result using linearity (a/s + b/(s+a)): a/s + b/(a + s)
+Transfer function: G(s) = 0.6667 / (s + 0.3333)
+Initial steady-state liquid level (h_s): 4.00 m
+Steady-state gain (K): 0.67
+Time constant (tau): 0.33 s
+
+Observations:
+1. Step Change: Level rises and settles at a new steady state above h0.
+2. Impulse Change: Level spikes then decays back to the steady state.
+3. Ramp Change: Level follows a ramp with a lag (constant offset).
