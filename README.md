@@ -491,3 +491,39 @@ Observations:
 1. Step Change: Level rises and settles at a new steady state above h0.
 2. Impulse Change: Level spikes then decays back to the steady state.
 3. Ramp Change: Level follows a ramp with a lag (constant offset).
+
+## W7: Dynamics of Second-Order and Higher-Order Systems
+
+```
+%pip install control
+import control as ct
+def plot_second_order_responses(Kp, tau, zeta_values, title):
+    """
+    Generates and plots the step responses for a second-order system
+    with varying damping coefficients (zeta).
+
+    Args:
+        Kp (float): The process gain.
+        tau (float): The natural period (time constant).
+        zeta_values (list): A list of damping coefficients to plot.
+        title (str): The title for the plot.
+    """
+    plt.figure(figsize=(12, 7))
+
+    # Define a time vector for the simulation
+    time_vector = np.linspace(0, 100, 1000)
+
+    # Loop through each zeta value, create the system, and plot its step response
+    for zeta in zeta_values:
+        # Define the numerator and denominator of the transfer function
+        numerator = [Kp]
+        denominator = [tau**2, 2 * zeta * tau, 1]
+
+        # Create the transfer function model
+        system = ct.tf(numerator, denominator)
+
+        # Calculate the step response
+        time, response = ct.step_response(system, T=time_vector)
+
+```
+
