@@ -933,3 +933,16 @@ The Part E results demonstrate reasonable agreement for a modest input change. T
 the input disturbance moves the reactor farther from that point.
 
 
+## Physical Interpretation
+We see that the linear model does a very good job of capturing the qualitative behavior in
+part (e) as the tested perturbation was relatively small. It did a much poorer job in part
+(f), and it even failed to account for the fact that biomass and product concentrations
+cannot be negative. We can confidently use the linear transfer function models with small
+process perturbations, but not large ones.
+Physically, when we decrease the substrate concentration steady state, there are more cells
+in the chemostat than the substrate concentration can support. This causes the cells to
+die off. In part (e), when cells die off, the substrate is consumed at a lower rate, which
+ends up increasing the concentration of substrate in the chemostat, which returns to a new
+steady state. In part (f), there is not enough substrate in the feed to support any cells in
+the bioreactor at all, so the cell biomass concentration approaches zero.
+
