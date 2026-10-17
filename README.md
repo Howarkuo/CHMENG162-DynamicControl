@@ -532,6 +532,9 @@ def plot_second_order_responses(Kp, tau, zeta_values, title):
 
 **Substrate-limited microbial growth in a continuous stirred-tank reactor (CSTR)**
 
+![chemostat](chemostat.png)
+
+
 This project models substrate consumption, biomass growth, and product formation in a chemostat. It compares a **nonlinear Monod-kinetics model** integrated with SciPy against a **first-order linearized state-space model** simulated with `python-control`.
 
 
@@ -542,6 +545,8 @@ Monod kinetics · Chemostat/CSTR · Substrate utilization · Microbial growth ·
 ## Governing equations
 
 ### Monod kinetics and substrate consumption
+![Monods-function-of-saturation-curve](Monods-function-of-saturation-curve.png)
+
 
 The substrate consumption rate is modeled as
 
@@ -910,7 +915,8 @@ def simulate_linear(t, Cs0_after=2.8):
 **Equivalent alternative:** Use `ct.forced_response(system, T=t, U=delta_Cs0 * np.ones_like(t))` to apply the input directly. Both functions simulate the **linear state-space model**, not `nonlinear_ode()`.
 
 ## Comparison and results
-
+![part_e_bioreactor](part_e_bioreactor.png)
+![part_f_bioreactor](part_f_bioreactor.png)
 
 
 ### Values reported in the original notes
