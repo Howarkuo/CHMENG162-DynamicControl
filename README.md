@@ -622,9 +622,9 @@ Here $C_{S0}$ is the substrate concentration in the inlet stream.
 
 | Category | Variable | Description |
 |---|---|---|
-| Manipulated input (MV) | $C_{S0}$ | Feed substrate concentration |
+| Manipulated input (MV) |$F$ | Volumetric Flow Rate |
 | Controlled/observed outputs (CVs) | $C_S$, $C_X$, $C_P$ | Reactor substrate, biomass, and product concentrations |
-| Potential disturbances (DVs) | $D$, kinetic parameters | Dilution-rate changes or parameter variations (held fixed in this simulation) |
+| Potential disturbances (DVs) |  $C_{S0}$ | Inital Reactor substrate concentration  |
 
 | Parameter | Value | Units |
 |---|---:|---|
