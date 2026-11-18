@@ -946,3 +946,212 @@ ends up increasing the concentration of substrate in the chemostat, which return
 steady state. In part (f), there is not enough substrate in the feed to support any cells in
 the bioreactor at all, so the cell biomass concentration approaches zero.
 
+# CBE 162 HW 9 — Internal Model Control
+
+## Problem 1. Controller design and stability
+
+Define $A(s)=(4s+1)(2s+1)=8s^2+6s+1$ and $P(s)=(1-3s)e^{-4s}$. The true plant is $G_P=4P/A$. Its right-half-plane zero is at $s=1/3$ and its dead time is four time units.
+
+```mermaid
+flowchart LR
+    R["Setpoint R"] -->|"+"| S(("Σ"))
+    S -->|"Error E"| C["Controller G_C"]
+    C -->|"Manipulated input U"| P["True plant G_P"]
+    P --> Y["Output Y"]
+    Y -->|"− Y"| S
+```
+
+The equivalent classical controller absorbs the inner IMC feedback. Since $E=R-Y$, $\tilde Y=\tilde G_P U$, and $U=Q(E+\tilde Y)$,
+
+$$
+G_C=\frac{U}{E}=\frac{Q}{1-Q\tilde G_P}.
+$$
+
+The outer forward path gives $Y=G_PG_C E=L E$. Substituting $E=R-Y$ gives the closed-loop response.
+
+$$
+L=G_CG_P,\qquad
+\frac{Y}{R}=\frac{L}{1+L}=\frac{QG_P}{1+Q(G_P-\tilde G_P)}.
+$$
+
+### (a) Filtered PID from the simplified model
+
+The simplified internal model is $\tilde G_{P,a}=4/A$. Inverting it gives a degree-two polynomial. The minimum-order filter that makes $Q$ proper is $(1+\tau_Cs)^{-2}$.
+
+$$
+Q_a=\frac{A(s)}{4(1+\tau_Cs)^2},\qquad
+G_{C,a}=\frac{A(s)}{4[(1+\tau_Cs)^2-1]}.
+$$
+
+Factoring $(1+\tau_Cs)^2-1=2\tau_Cs(1+\tau_Cs/2)$ gives
+
+$$
+G_{C,a}(s)=
+\underbrace{\frac{3}{4\tau_C}\left(1+\frac{1}{6s}+\frac43s\right)}_{\text{ideal PID}}
+\underbrace{\frac{1}{1+\tau_Cs/2}}_{\text{filter on the whole PID}}.
+$$
+
+### (b) Stability of controller (a)
+
+Use the true plant in the outer loop. Then $L_a=P/[\tau_Cs(\tau_Cs+2)]$, so the roots of the following characteristic equation determine stability:
+
+$$
+D_a(s)=\tau_C^2s^2+2\tau_Cs+P(s)=0.
+$$
+
+To find an imaginary-axis crossing, substitute $s=j\omega$ and equate the real and imaginary parts:
+
+$$
+\begin{aligned}
+\cos(4\omega)-3\omega\sin(4\omega)&=(\tau_C\omega)^2,\\
+\sin(4\omega)+3\omega\cos(4\omega)&=2\tau_C\omega.
+\end{aligned}
+$$
+
+The first crossing occurs at $\omega\approx0.193385$ and $\tau_C\approx2.87959$. The loop magnitude and unwrapped phase both decrease with frequency. Increasing $\tau_C$ moves the unity-gain crossover to a lower frequency and reduces the phase lag there. The Nyquist test gives **asymptotic stability for $\tau_C>\tau_C^\star\approx2.87959$**, a marginal oscillatory mode at $\tau_C^\star$, and instability below it.
+
+### (c) Filtered PID from the model with delay and inverse response
+
+Apply the lecture's first-order Padé approximation to the internal model's **two-unit** delay:
+
+$$
+e^{-2s}\approx\frac{1-s}{1+s},\qquad
+\tilde G_{P,c}^{\mathrm{Pade}}
+=\underbrace{(1-5s)(1-s)}_{N(s)}
+\underbrace{\frac{4}{A(s)(1+s)}}_{\text{invertible model factor}}.
+$$
+
+The two right-half-plane zeros stay in $N(s)$. The inverse of the stable model factor has numerator degree three, so the minimum-order filter is $(1+\tau_Cs)^{-3}$.
+
+$$
+Q_c=\frac{A(s)(1+s)}{4(1+\tau_Cs)^3},\qquad
+G_{C,c}=\frac{A(s)(1+s)}{4[(1+\tau_Cs)^3-N(s)]}.
+$$
+
+With $N(s)=1-6s+5s^2$, the controller can be written as a PID acting through a filter with two poles and one zero:
+
+$$
+G_{C,c}(s)=\frac{6}{4(3\tau_C+6)}
+\left(1+\frac{1}{6s}+\frac43s\right)
+\frac{1+s}
+{1+\dfrac{3\tau_C^2-5}{3\tau_C+6}s+
+\dfrac{\tau_C^3}{3\tau_C+6}s^2}.
+$$
+
+### (d) Stability of controller (c)
+
+The characteristic equation for this **Padé-designed controller on the exact-delay plant** is
+
+$$
+D_c(s)=(1+\tau_Cs)^3-N(s)+(1+s)P(s)=0.
+$$
+
+Define $H(\omega)=N(j\omega)-(1+j\omega)P(j\omega)$ and $x=\tau_C\omega$. At an imaginary-axis crossing, $(1+jx)^3=H(\omega)$, so
+
+$$
+x=\sqrt{\frac{1-\operatorname{Re}H(\omega)}{3}},\qquad
+3x-x^3=\operatorname{Im}H(\omega),\qquad
+\tau_C=\frac{x}{\omega}.
+$$
+
+The large-$\tau_C$ branch is stable since $[N(s)-(1+s)P(s)]/(1+\tau_Cs)^3$ tends uniformly to zero in the closed right half-plane. Its numerator vanishes at the origin and grows at most quadratically there as $|s|\to\infty$. The first crossing as $\tau_C$ decreases is at $\omega\approx1.48655$ and $\tau_C^\star\approx1.70325$.
+
+For $\tau_C\ge0.5$, it suffices to search $0<\omega<70$. The bound $|H(\omega)|\le2+10\omega+8\omega^2$ is smaller than $(0.5\omega)^3$ for $\omega\ge70$. The numerical crossings and the direction of motion follow from $ds/d\tau_C=-(\partial D_c/\partial\tau_C)/(\partial D_c/\partial s)$.
+
+| Crossing $\tau_C$ | Pole-pair motion as $\tau_C$ decreases | Unstable pairs immediately below |
+|---:|---|---:|
+| 1.70325 | Into the right half-plane | 1 |
+| 1.35883 | Into the right half-plane | 2 |
+| 1.05175 | Into the right half-plane | 3 |
+| 0.95057 | Into the left half-plane | 2 |
+| 0.79537 | Into the left half-plane | 1 |
+
+For $0<\tau_C\le0.5$, $D_c(0)=1$ and $D_c(2)=(1+2\tau_C)^3-9-15e^{-8}<0$. Continuity on the positive real axis then guarantees a positive real root. The stable range is **$\tau_C>\tau_C^\star\approx1.70325$**, with a marginal oscillatory mode at $\tau_C^\star$.
+
+### (e) True-plant unit-step response at $\tau_C=5$
+
+Both loops use the true plant's exact four-unit delay. The two open-loop transfer functions are
+
+$$
+L_a(s)=\frac{1-3s}{25s^2+10s}e^{-4s},\qquad
+L_c(s)=\frac{(1+s)(1-3s)}{125s^3+70s^2+21s}e^{-4s}.
+$$
+
+| Metric | (a) Simplified-model controller | (c) Padé-designed controller |
+|---|---:|---:|
+| Output dead time | 4 | 4 |
+| Minimum output | −0.1029 | −0.0437 |
+| Overshoot | 44.34% | 0.52% |
+| 2% settling time | 101.56 | 40.22 |
+| Steady-state output | 1 | 1 |
+
+Both outputs wait four time units and then dip below zero. The dead time causes the wait, and the right-half-plane zero causes the inverse response. Controller (c) reduces both the dip and the overshoot. At this stable tuning, integral action gives zero steady-state error for both controllers.
+
+<img width="1496" height="781" alt="image" src="https://github.com/user-attachments/assets/bd87cfb5-9d1d-4e37-a04a-cc58bab26801" />
+
+
+#### Plot
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+from scipy.signal import tf2ss
+
+def step_with_delay(num, den, delay=4.0, windows=45, samples=400):
+    A, B, C, direct = tf2ss(num, den)
+    assert np.allclose(direct, 0)
+    B, C = B.ravel(), C.ravel()
+
+    state = np.zeros(len(B))
+    time_parts, output_parts = [], []
+    previous = None
+    for k in range(windows):
+        left, right = k * delay, (k + 1) * delay
+
+        def output(t):
+            if previous is None:
+                return 0.0
+            return C @ previous(t - delay)
+
+        def rhs(t, x):
+            return A @ x + B * (1.0 - output(t))
+
+        result = solve_ivp(rhs, (left, right), state, dense_output=True,
+                           rtol=1e-9, atol=1e-11)
+        if not result.success:
+            raise RuntimeError(result.message)
+        times = np.linspace(left, right, samples, endpoint=False)
+        time_parts.append(times)
+        output_parts.append(np.array([output(t) for t in times]))
+        state = result.y[:, -1]
+        previous = result.sol
+
+    return np.concatenate(time_parts), np.concatenate(output_parts)
+
+tau = 5.0
+t, y_a = step_with_delay([-3, 1], [tau**2, 2*tau, 0])
+_, y_c = step_with_delay([-3, -2, 1],
+                         [tau**3, 3*tau**2 - 5, 3*tau + 6, 0])
+
+fig, ax = plt.subplots(figsize=(8.8, 4.7), layout='constrained')
+ax.plot(t, y_a, color='#2855a6', lw=2.3, label='(a) Simplified-model controller')
+ax.plot(t, y_c, color='#a2472d', lw=2.3, label='(c) Padé-designed controller')
+ax.axvline(4, ls=':', color='#a0aab6', lw=1.2, label='End of plant dead time')
+ax.axhline(1, ls='--', color='#667085', lw=1.2, label='Unit setpoint')
+ax.set(xlim=(0, 140), xlabel='Time (model time units)', ylabel='Output y(t)')
+ax.set_title('Part (e) · True-plant unit-step response at τC = 5', loc='left')
+ax.grid(alpha=.2)
+ax.spines[['top','right']].set_visible(False)
+ax.legend(loc='lower right', frameon=False)
+fig.savefig('imc-part-e-step-response.png', dpi=170)
+
+for y in (y_a,y_c):
+    last = np.flatnonzero(abs(y-1)>.02)[-1]
+    print(y.min(),t[y.argmin()],y.max(),t[y.argmax()],t[last+1],y[-1])
+plt.show()
+```
+
+
+
