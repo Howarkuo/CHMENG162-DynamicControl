@@ -1153,5 +1153,12 @@ for y in (y_a,y_c):
 plt.show()
 ```
 
-
+## Lec 15 - 25 Concepts
+- Systems with Inverse Response and Time Delay, Right-half plane (RHP) zeros in  transfer function produce inverse responses, Systems with Time Delay (e.g fluid in pipe flow), First-order Plus Time Delay (FOPTD) Approximation of Higher-order TFs
+- Closed-loop Transfer Functions & Proportional-Integral-Derivative Controllers, open-loop control , Closed-loop (Feedback) Control, Closed-loop Transfer Functions, Sensitivity Functions, The proportional-integral-derivative Control Method, PID Controller in Transfer Function Form
+-  Proportional (P) Mode/ Integral (I) Mode, Derivative (D) Mode,  Time Domain Behavior, Direct and Reverse Acting: Gain Sign is Important, Stability of closed-loop control system, The Routh Stability Criterion
+-  PID Controller Design and Tuning, First Order plus Dead Time system and PI control (disturbance response), Classical tuning methods (Ziegler-Nichols Closed-loop Method), Model-based design methods : Direct synthesis method/ Internal model control (IMC), Internal model control (IMC)
+-  Model-based Controller Tuning via Direct Synthesis Method, Stability versus Performance, The Direct Synthesis (DS) Tuning Method, Desired Closed-Loop TF, Desired Closed-Loop TF, First-order plus time delay (FOPTD) model , Second-order plus time delay model
+-  Internal Model Control, Derivation of Closed-loop TFs, Closed-loop Stability in IMC: GQ must have poles in the LHP, IMC Tuning Procedure, Connection Between IMC and DS, Actuator MV Constraints
+-  Feedforward and Cascade Control, 
 
